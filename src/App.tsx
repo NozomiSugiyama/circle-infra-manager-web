@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import ComposingRoute                from "./components/commons/ComposingRoute";
 import ComposingSwitch               from "./components/commons/ComposingSwitch";
+import { AuthProps }                 from "./components/wrappers/Auth";
 import { MainLayoutEventProps }      from "./components/wrappers/MainLayout";
 import { NotificationListenerProps } from "./components/wrappers/NotificationListener";
 import {
@@ -46,9 +47,9 @@ export default () => (
 const theme = createMuiTheme({
     palette: {
         primary: {
-            light: "#ffc246",
-            main: "#ff9100",
-            dark: "#c56200",
+            light: "#7354A4",
+            main: "#694A9A",
+            dark: "#5F4090",
             contrastText: "#fff",
         },
     },
@@ -63,6 +64,6 @@ const theme = createMuiTheme({
     },
 });
 
-export interface PageComponentProps<T> extends RouteComponentProps<T>,  NotificationListenerProps, MainLayoutEventProps {
+export interface PageComponentProps<T> extends RouteComponentProps<T>, AuthProps, NotificationListenerProps, MainLayoutEventProps {
     computedMatch?: match<T>;
 }

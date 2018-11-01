@@ -1,8 +1,9 @@
 import React from "react";
+import { Typography }         from "@material-ui/core";
 import { PageComponentProps } from "../../App";
 import Page                   from "../commons/Page";
 
-export default class DashboardPage extends React.Component<PageComponentProps<{id: string}>>{
+export default class DashboardPage extends React.Component<PageComponentProps<{}>>{
 
     render() {
 
@@ -13,7 +14,11 @@ export default class DashboardPage extends React.Component<PageComponentProps<{i
 
         return (
             <Page>
-                DashboardPage
+                <Typography
+                    variant="display1"
+                >
+                    Dashboard Page
+                </Typography>
             </Page>
         );
     }

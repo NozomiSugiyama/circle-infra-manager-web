@@ -1,8 +1,9 @@
-import React from "react";
+import React                  from "react";
+import { Typography }         from "@material-ui/core";
 import { PageComponentProps } from "../../App";
 import Page                   from "../commons/Page";
 
-export default class WorkListPage extends React.Component<PageComponentProps<{id: string}>>{
+export default class WorkListPage extends React.Component<PageComponentProps<{}>>{
 
     render() {
 
@@ -13,7 +14,11 @@ export default class WorkListPage extends React.Component<PageComponentProps<{id
 
         return (
             <Page>
-                TopPage
+                <Typography
+                    variant="display1"
+                >
+                    TopPage
+                </Typography>
             </Page>
         );
     }

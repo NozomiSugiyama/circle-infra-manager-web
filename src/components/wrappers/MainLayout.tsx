@@ -2,6 +2,7 @@ import React                         from "react";
 import { Drawer, withTheme }         from "@material-ui/core";
 import { RouteComponentProps }       from "react-router-dom";
 import styled                        from "styled-components";
+import { AuthProps }                 from "./Auth";
 import { NotificationListenerProps } from "./NotificationListener";
 import {
     default as Header,
@@ -13,7 +14,7 @@ interface State {
     drawerOpend: boolean;
 }
 
-interface Props extends RouteComponentProps<{}>, NotificationListenerProps {
+interface Props extends RouteComponentProps<{}>, AuthProps, NotificationListenerProps {
     render: (mainLayoutEventProps: MainLayoutEventProps) => React.ReactNode;
 }
 
@@ -41,15 +42,22 @@ export default class extends React.Component<Props, State> {
     render() {
 
         const {
-            // history,
+            auth,
+            history,
             // notificationListener,
             render
         } = this.props;
+
+        console.log(auth);
 
         return (
             <div>
                 <StyledHeader
                     toggleDrawer={this.toggleDrawer}
+                    // tslint:disable-next-line:jsx-no-lambda
+                    onSignIn={() => history.push("/sign-in")}
+                    onSignOut={auth.signOut}
+                    signInd={!!auth.credential}
                     position="fixed"
                 />
                 <Host>
@@ -113,10 +121,8 @@ const Content = styled.div`
     width: calc(100% - 15rem);
     margin-left: 15rem;
     min-height: 100vh;
-    margin-bottom: 100px;
-    padding-left: 32px;
-    padding-right: 32px;
-    padding-top: 80px;
+    padding: 80px 32px 100px;
+    box-sizing: border-box;
     @media (max-width: 767px) {
         width: 100%;
         margin-left: 0rem;
@@ -128,6 +134,9 @@ const Main = styled.main`
 
 const StyledNavigationBar = styled(NavigationBar)`
     width: 15rem;
+    @media (max-width: 767px) {
+        width: 17rem;
+    }
 `;
 
 const _Header = styled<HeaderProps>(Header)`

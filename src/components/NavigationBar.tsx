@@ -14,7 +14,19 @@ import styled from "styled-components";
 export default (props: React.HTMLAttributes<HTMLElement>) => (
     <nav {...props}>
         <Toolbar>
-            <Title>ServiceName</Title>
+            <Link
+                to="/"
+            >
+                <Title
+                    component="h6"
+                    variant="display1"
+                >
+                    ななまる
+                </Title>
+            </Link>
+            <Typography>
+                Circle Infra Manager
+            </Typography>
         </Toolbar>
         <Divider />
         <List>
@@ -48,8 +60,12 @@ export default (props: React.HTMLAttributes<HTMLElement>) => (
 
 const StyledDiv = styled.div`
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    box-sizing: border-box;
+    padding-top: 8px;
+    padding-left: 24px;
     border-top: 1px;
     color: ${(props: any) => props.selected ? props.theme.palette.primary.main : "black"};
     min-height: ${(props: any) => props.theme.mixins.toolbar.minHeight}px;
